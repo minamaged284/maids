@@ -11,7 +11,7 @@ import {slideInAnimation} from './slideAnimate'
   ]
 })
 export class AppComponent {
-  title = 'medaisCC';
+  title = 'maids';
   constructor(private contexts: ChildrenOutletContexts) {}
   getRouteAnimationData(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
