@@ -1,0 +1,20 @@
+<div class="container shadow p-4 m-4 mx-auto my-5">
+    <div class="rounded-circle overflow-hidden text-center mx-auto" style="width: 300px;height: 300px ;">
+        <img class="w-100 " [src]="Users.avatar" [title]="Users.first_name" [alt]="Users.first_name">
+
+    </div>
+<h2 class="h6 text-main my-3"><span class="text-black">ID:</span> {{Users.id}}</h2>
+
+<h2 class="h6 text-main my-3"><span class="text-black">First Name:</span> {{Users.first_name}}</h2>
+<h2 class="h6 text-main my-3"><span class="text-black">Last Name:</span> {{Users.last_name}}</h2>
+
+<h2 class="h6 text-main my-3"><span class="text-black">Email:</span> {{Users.email}}</h2>
+<div class="text-center">
+    <button [routerLink]="'/users'" mat-raised-button color="warn">Go back</button>
+
+
+
+
+</div>
+
+</div>

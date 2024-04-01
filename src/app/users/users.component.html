@@ -1,0 +1,55 @@
+<section class="mx-auto py-5" >
+
+    <div class="container text-center">
+        <h2 class="text-center pt-2 mx-auto d-flex justify-content-center" *ngIf="Users.length > 0">Users</h2>
+        <mat-form-field class="position-relative w-50 my-5 mx-auto" appearance="outline" class="p-3">
+            <mat-label><i class="fa-solid fa-magnifying-glass"></i> Search</mat-label>
+            <input [(ngModel)]="userInput" class=" " matInput placeholder="">
+          </mat-form-field>
+        <div class="row g-4 mx-auto">
+            <div  *ngFor="let Usr of !userInput?(Users  | paginate: { id: 'postsPagination',
+            itemsPerPage: pageSize,
+            currentPage: p,
+            totalItems: total }):(Users |search:userInput | paginate: { id: 'postsPagination',
+            itemsPerPage: pageSize,
+            currentPage: p,
+            totalItems: total })" class="col-lg-4 " >
+                <div [routerLink]="['/userDetail',Usr.id]"  class="product  cursor-pointer py-5 px-3 overflow-hidden shadow rounded-3  mx-auto">
+                    <div>
+                        <div class="rounded-circle overflow-hidden text-center  mx-auto" style="width: 250px;height: 250px ;">
+                            <img class="w-100 " [src]="Usr.avatar" [title]="Usr.first_name" [alt]="Usr.first_name">
+
+                        </div>
+                    <h2 class="text-start h6 text-main my-3"><span class="text-black">ID:</span> {{Usr.id}}</h2>
+
+                    <h2 class="text-start h6 text-main my-3"><span class="text-black">First Name:</span> {{Usr.first_name}}</h2>
+                    <h2 class="text-start h6 text-main my-3"><span class="text-black">Last Name:</span> {{Usr.last_name}}</h2>
+
+                    <h2 class="text-start h6 text-main my-3"><span class="text-black">Email:</span> {{Usr.email}}</h2>
+                </div>
+                    
+                </div>
+            </div>
+
+            <h2 *ngIf="(Users|search:userInput).length==0&&userInput" class="shadow p-5 text-center text-danger">This user does not exist</h2>
+            </div>
+    </div>
+
+
+        <div class="d-flex justify-content-center mt-5">
+            <pagination-controls  id="postsPagination"
+            (pageChange)="pageChanged($event)"
+            (pageBoundsCorrection)="pageChanged($event)"
+            [maxSize]="5"
+            [directionLinks]="true"
+            [autoHide]="true"
+            [responsive]="true"
+            previousLabel="Previous"
+            nextLabel="Next"
+            screenReaderPaginationLabel="Pagination"
+            screenReaderPageLabel="page"
+            screenReaderCurrentLabel="You're on page">
+    </pagination-controls>
+    </div>
+
+    </section>
